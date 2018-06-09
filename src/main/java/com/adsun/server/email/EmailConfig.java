@@ -2,34 +2,79 @@ package com.adsun.server.email;
 
 import java.util.Properties;
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import com.sun.mail.smtp.SMTPSSLTransport;
 import com.sun.mail.smtp.SMTPTransport;
 
 @ConfigurationProperties(prefix = "email")
+@Component
 public class EmailConfig {
-	@Value("${debug}")
+	
+//	@Value("${email.debug}")
 	private boolean debug;
 
-	@Value("${userName}")
+//	@Value("${email.userName}")
 	private String userName;
 
-	@Value("${passWord}")
+//	@Value("${email.passWord}")
 	private String passWord;
 
-	@Value("${host}")
+//	@Value("${email.host}")
 	private String host;
 
-	@Value("${port}")
+//	@Value("${email.port}")
 	private int port;
 	
-	@Autowired
+	@Resource
 	private Session session;
+
+	public boolean isDebug() {
+		return debug;
+	}
+
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
 
 	/**
 	 * 配置邮件发送器

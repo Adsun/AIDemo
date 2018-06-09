@@ -2,6 +2,7 @@ package com.adsun.server.email;
 
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.mail.Address;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -10,15 +11,16 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.sun.mail.smtp.SMTPTransport;
 
 @Component
 public class EmailServer {
-	@Autowired
+	@Resource
 	private SMTPTransport transport;
-	@Autowired
+	@Resource
 	private Session session;
 	
 	public void sendEmail(String subject, String content, String address) throws AddressException, MessagingException {
@@ -32,7 +34,7 @@ public class EmailServer {
 	public void sendEmail(String subject, String subjectCharset, String content, String contentCharset, Date sendDate, String address) throws AddressException, MessagingException {
 
 		MimeMessage message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(transport.getLocalHost()));
+		message.setFrom(new InternetAddress(transport.getURLName().getUsername()));
 		
 		Address[] add = InternetAddress.parse(address);
 

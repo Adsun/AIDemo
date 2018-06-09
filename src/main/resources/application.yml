@@ -1,0 +1,8 @@
+server: 
+  port: 8080
+email: 
+  debug: false
+  userName: adsun_feng@foxmail.com
+  passWord: pmimclwfbaptjcdj
+  host: smtp.qq.com
+  port: 465
