@@ -6,3 +6,16 @@ email:
   passWord: pmimclwfbaptjcdj
   host: smtp.qq.com
   port: 465
+spring: 
+  aop: 
+    auto: true
+  jpa: 
+    properties: 
+      hibernate: 
+        hbm2ddl: 
+          auto: create-drop
+  datasource: 
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver   
